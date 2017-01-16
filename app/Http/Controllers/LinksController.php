@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Link;
+use App\Http\Requests\LinkRequest;
 
 class LinksController extends Controller
 {
@@ -34,7 +34,7 @@ class LinksController extends Controller
      * @param  Request $request 
      * @return Response
      */
-    public function store(Request $request)
+    public function store(LinkRequest $request)
     {
     	$link = Link::create($request->all());
         session()->flash('success', 'Link successfully created');
@@ -69,7 +69,7 @@ class LinksController extends Controller
      * @param  Link    $link    Link for update
      * @return Response
      */
-    public function update(Request $request, Link $link)
+    public function update(LinkRequest $request, Link $link)
     {
         $link->update($request->all());
         session()->flash('success', 'Link successfully updated');
