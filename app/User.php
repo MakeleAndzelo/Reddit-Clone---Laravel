@@ -33,6 +33,15 @@ class User extends Authenticatable
      */
     public function links()
     {
-        return hasMany('App\Link');
+        return $this->hasMany('App\Link');
+    }
+
+
+    /**
+     * Create relation with comments
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

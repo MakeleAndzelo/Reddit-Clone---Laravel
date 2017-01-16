@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Link;
-use App\Http\Requests\LinkRequest;
+use App\Http\Requests\LinksRequest;
 use Auth;
 
 class LinksController extends Controller
@@ -39,9 +39,9 @@ class LinksController extends Controller
      * @param  Request $request 
      * @return Response
      */
-    public function store(LinkRequest $request)
+    public function store(LinksRequest $request)
     {
-    	$link = Auth::user()->links()->build($request->all());
+    	$link = Auth::user()->links()->create($request->all());
         session()->flash('success', 'Link successfully created');
 
     	return redirect(route('links.show', $link->id));
@@ -74,7 +74,7 @@ class LinksController extends Controller
      * @param  Link    $link    Link for update
      * @return Response
      */
-    public function update(LinkRequest $request, Link $link)
+    public function update(LinksRequest $request, Link $link)
     {
         $link->update($request->all());
         session()->flash('success', 'Link successfully updated');

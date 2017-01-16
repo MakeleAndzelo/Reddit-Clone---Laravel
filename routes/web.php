@@ -18,4 +18,6 @@ Route::resource('links', 'LinksController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'LinksController@index');
+
+Route::post('links/{link}/comments', 'CommentsController@store');

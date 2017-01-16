@@ -22,6 +22,14 @@ class Link extends Model
      */
     public function user()
     {
-    	return belongsTo('App\User');
+    	return $this->belongsTo('App\User');
+    }
+
+    /**
+     * Create relation with comments
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }
