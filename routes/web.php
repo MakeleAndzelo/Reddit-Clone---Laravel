@@ -15,3 +15,7 @@ Route::get('/', 'LinksController@index');
 
 
 Route::resource('links', 'LinksController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

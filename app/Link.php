@@ -16,4 +16,12 @@ class Link extends Model
     	'title',
     	'url'
     ];
+
+    /**
+     * Creates relation with user
+     */
+    public function user()
+    {
+    	return belongsTo('App\User');
+    }
 }

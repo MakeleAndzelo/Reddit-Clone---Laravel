@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Link;
 use App\Http\Requests\LinkRequest;
+use Auth;
 
 class LinksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
 	/**
 	 * Listning of links
 	 * 
@@ -36,7 +41,7 @@ class LinksController extends Controller
      */
     public function store(LinkRequest $request)
     {
-    	$link = Link::create($request->all());
+    	$link = Auth::user()->links()->build($request->all());
         session()->flash('success', 'Link successfully created');
 
     	return redirect(route('links.show', $link->id));
