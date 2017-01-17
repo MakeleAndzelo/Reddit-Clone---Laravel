@@ -13,11 +13,10 @@
 
 Route::get('/', 'LinksController@index');
 
-
 Route::resource('links', 'LinksController');
 
 Auth::routes();
 
-Route::get('/home', 'LinksController@index');
-
 Route::post('links/{link}/comments', 'CommentsController@store');
+
+Route::get('/logout', 'UsersController@logout');

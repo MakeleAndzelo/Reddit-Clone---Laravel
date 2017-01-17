@@ -1,31 +1,14 @@
 @extends('app.layout')
 
 @section('content')
-	<h1>Links</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>title</th>
-				<th>url</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($links as $link)
-				<tr>
-					<td>{{ $link->id }}</td>
-					<td>{{ $link->title }}</td>
-					<td>{{ $link->url }}</td>
-					<td>
-						<a href="{{ route('links.show', $link->id) }}">show</a>
-						<a href="{{ route('links.edit', $link->id) }}">edit</a>
-						{{ Form::open(['method' => 'DELETE', 'action' => ['LinksController@destroy', $link->id]])}}
-							{{ Form::submit('destroy') }}
-						{{ Form::close() }}
-					</td>
-				</tr>
-			@endforeach
-		</tbody>
-	</table>
-
+	@foreach($links as $link)
+		<article>
+			<h1><a href="{{ action('LinksController@show', $link->id) }}">{{ $link->title }}</a></h1>
+			<p>Submitted about {{ $link->created_at->diffForHumans() }} by <strong>{{ $link->user->email }}</strong> </p>
+			<div class="btn-group-sm">
+				<a href="{{ $link->url }}" class="btn btn-default btn-sm">View link</a>
+			</div>
+		</article>
+		<hr>
+	@endforeach
 @endsection

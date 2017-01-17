@@ -1,14 +1,16 @@
 @if ($errors->count() > 0)
-	<ul>
-		@foreach ($errors as $error)
-			<li>{{ $error }}</li>
-		@endforeach
-	</ul>
+	@foreach ($errors as $error)
+		<div class="alert alert-danger">{{ $error }}</div>
+	@endforeach
 @endif
-{{ Form::label('title', 'Title: ')}}
-{{ Form::text('title') }}
-<br><br>
-{{ Form::label('url', 'URL: ') }}
-{{ Form::text('url') }}
-<br><br>
-{{ Form::submit($submitButton)}}
+<div class="form-group">
+	{{ Form::label('title', 'Title: ')}}
+	{{ Form::text('title', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+	{{ Form::label('url', 'URL: ') }}
+	{{ Form::text('url', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+	{{ Form::submit($submitButton, ['class'=>'btn btn-primary'])}}
+</div>

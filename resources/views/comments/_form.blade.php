@@ -1,6 +1,6 @@
 {{ Form::open(['method' => 'post', 'action' => ['CommentsController@store', $link->id]]) }}
-	{{ Form::label('body', 'Comment Body: ') }}
-	{{ Form::textarea('body') }}
-	<br><br>
-	{{ Form::submit('Add comment') }}
+	<div class="form-group">
+		{{ Form::textarea('body', null,['class' => 'form-control', 'rows' => 3]) }}
+	</div>
+	{{ Form::submit('Add comment', ['class' => 'btn-sm btn-primary']) }}
 {{ Form::close() }}
